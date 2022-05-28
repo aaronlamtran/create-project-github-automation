@@ -1,3 +1,4 @@
+#! /usr/bin/python
 import sys
 import os
 from github import Github
@@ -5,17 +6,25 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-path = os.getenv("FILEPATH")
-username = os.getenv("GITHUB_USERNAME")
+path = os.getenv("YOUR_NEW_PROJECTS_FILEPATH")
 token = os.getenv("GITHUB_TOKEN")
 
-def create():
+def main():
     folderName = str(sys.argv[1])
-    os.makedirs(path + str(folderName))
-    g = Github(token)
-    user = g.get_user();
-    user.create_repo(folderName)
-    print(f"\nSuccesfully created repository {folderName}\n")
+
+    try:
+        os.makedirs(path + str(folderName))
+    except Exception:
+        sys.exit('FAIL_LOCAL')
+
+    try:
+        g = Github(token)
+        user = g.get_user();
+        user.create_repo(folderName)
+    except Exception:
+        sys.exit('FAIL_REMOTE')
+
 
 if __name__ == "__main__":
-    create()
+    main()
+
