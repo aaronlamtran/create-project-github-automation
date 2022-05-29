@@ -13,6 +13,9 @@ def main():
     folderName = str(sys.argv[1])
 
     try:
+        dir_exist = os.path.isdir(path + folderName)
+        if dir_exist:
+            sys.exit('FAIL_LOCAL')
         os.makedirs(path + str(folderName))
     except Exception:
         sys.exit('FAIL_LOCAL')

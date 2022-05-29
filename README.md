@@ -21,6 +21,11 @@ $ git clone https://github.com/aaronlamtran/create-project-github-automation.git
 ```bash
 $ cd create-project-github-automation
 ```
+for YOUR_NEW_PROJECTS_FILEPATH:
+```bash
+$ cd .. && pwd | pbcopy && cd -
+```
+for PATHTOGITHUBAUTO:
 ```bash
 $ pwd | pbcopy
 ```
@@ -30,11 +35,10 @@ $ pwd | pbcopy
 $ pip3 install -r requirements.txt
 ```
 
-4. create your .env file. see template provided (.example.env)
+4. create your .env file and edit the values.
 ```bash
-$ touch .env
+$ cat .example.env > .env
 ```
-
 
 5. run bash script to initialize
 ```bash

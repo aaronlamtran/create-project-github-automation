@@ -40,3 +40,15 @@ function git-me() {
 
   cd $cwd
 }
+
+function git-me-remove() {
+  cwd=$(pwd)
+
+  python3 $PATHTOGITHUBAUTO/delete.py "$1"
+
+  echo '\ncmd + click to view your repos:' https://github.com/${GITHUB_USERNAME}\?tab=repositories "\n"
+
+
+
+  cd $cwd
+}
